@@ -1,4 +1,5 @@
-
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<c:import url="header.html" />
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -19,7 +20,14 @@
 
     <label><b>Last Name</b></label>
     <input type="text" name="Last Name" required>
- 
+    
+    <label><b>Username</b></label>
+    <input type="text" name="Username" required>
+    
+    <label><b>Password</b></label>
+    <input type="password" name="Password" required>
+    
+    
     <label><b>Phone Number</b></label>
     <input type="text" name="Phone Number" required>
 
@@ -43,7 +51,8 @@
         </form>
         
         
-        
+
+<c:import url="footer.jsp" />
         
         
     </body>

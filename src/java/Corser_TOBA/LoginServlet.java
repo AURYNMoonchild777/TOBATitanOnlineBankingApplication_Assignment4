@@ -1,8 +1,4 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package Corser_TOBA;
 
 import java.io.IOException;
@@ -15,7 +11,6 @@ import javax.servlet.http.HttpServletResponse;
 
 
 
-
 @WebServlet(name = "LoginServlet", urlPatterns = {"/LoginServlet"})
 public class LoginServlet extends HttpServlet {
 
@@ -24,10 +19,10 @@ public class LoginServlet extends HttpServlet {
             throws ServletException, IOException {
         
         
-        String Username = request.getParameter("jsmith@toba.com");
-        String Password = request.getParameter("letmein");
+        String Username = request.getParameter("uName");
+        String Password = request.getParameter("pswd");
         
-if (Username.equals("jsmith@toba.com") && Password.equals("letmein")){
+if (Username.equals("uName") && Password.equals("pswd")){
            
            response.sendRedirect("Account_activity.html");
          
@@ -36,7 +31,7 @@ if (Username.equals("jsmith@toba.com") && Password.equals("letmein")){
 }
         
         
-        
+
         
         
         

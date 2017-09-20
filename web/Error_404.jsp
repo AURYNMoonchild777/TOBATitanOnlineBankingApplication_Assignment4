@@ -1,4 +1,5 @@
-
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<c:import url="header.html" />
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -16,5 +17,7 @@
 
         <p>Please contact the server's administrator if the problem persists.</p>
         
+        <c:import url="footer.jsp" />
+
     </body>
 </html>
