@@ -1,18 +1,16 @@
 
 package Corser_TOBA;
 
-import java.beans.Statement;
+
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.ResultSet;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+
 
 
 @WebServlet(name ="NewCustomerServlet", urlPatterns = {"/new_customer"})
@@ -73,11 +71,13 @@ public class NewCustomerServlet extends HttpServlet {
      *
      * @param request servlet request
      * @param response servlet response
+     * @param user
+     * @param param
      * @throws ServletException if a servlet-specific error occurs
      * @throws IOException if an I/O error occurs
      */
    
-    protected void doPost(HttpServletRequest request, HttpServletResponse response, Object param)
+    protected void doPost(HttpServletRequest request, HttpServletResponse response, Object param, Object user)
             throws ServletException, IOException {
         processRequest(request, response);
         
@@ -106,55 +106,12 @@ public class NewCustomerServlet extends HttpServlet {
     String ZipCode = request.getParameter("Zip Code");
     String Email = request.getParameter("Email");
  
-    response.setContentType("text/html");
-    PrintWriter out = response.getWriter();
-    System.out.println("Connection Establishment");
-    Connection con = null;
-    String ull = "\"C:\\Users\\AURYN\\Documents\\NetBeansProjects\\TOBA Titan Onliine Banking Application\\src\\java\\Corser_TOBA\\UserLogin.java\"";
     
-    String drive = "com.mysql.jdbc.Driver";
-    String uName = "LastName" + "ZipCode";
-    String pswd = "welcome1";
-    String uname="";
-    String userp="";
-    String query= "";
-    Statement st=null;
-    ResultSet rs=null;
     HttpSession sess = request.getSession(true);
     
     HttpSession session = request.getSession();
-    session.setAttribute("User", param);
+    session.setAttribute("User", user);
     
-    try {
-    Class.forName(drive).newInstance();
-    con = DriverManager.getConnection(ull,uname,pswd);
-    if(request.getParameter("uname")!=null &&
-    request.getParameter("uname")!="" && request.getParameter("pswd")!=null &&
-    request.getParameter("pswd")!="")
-    {
-    uname = request.getParameter("uname").toString();
-    userp = request.getParameter("pswd").toString();
-    System.out.println(query);
-    st = (Statement) con.createStatement();
-    int cnt=0;
-    while(rs.next())
-    {
-    sess.setAttribute("uname",rs.getString(2));
-    cnt++;
-    }
-    if(cnt>0)
-    {
-    response.sendRedirect("index.html");
-    }
-    else
-    {
-    response.sendRedirect("Account_activity.html");
-    }
-    }
-
-    } catch (Exception e) {
-    e.printStackTrace();
-    }
     
     String message;
     
@@ -167,8 +124,12 @@ public class NewCustomerServlet extends HttpServlet {
         }
  
              else {
+                     User u = new User(FirstName + LastName + Username + Password + PhoneNumber + Address + City + State + ZipCode + Email); 
+                     request.setAttribute("User", user);
                      message = "";
                      url = "Success.html";
+                     // Here's where I updated the code to add the user to the database.
+                     UserDB.insert(u);
              }
         
         request.setAttribute("Message", message);

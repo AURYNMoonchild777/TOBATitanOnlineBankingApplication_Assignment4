@@ -3,12 +3,20 @@ package Corser_TOBA;
 
 
 import java.io.Serializable;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 
 
-public class UserLogin implements Serializable {
+@Entity
+public class User implements Serializable {
     
     
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     
+    private Long userID;
     private String firstName;
     private String lastName;
     private String username;
@@ -22,27 +30,26 @@ public class UserLogin implements Serializable {
     
     public boolean valid;
     
-    private UserLogin() {
-   
+    private User() {
         firstName = "";
         lastName = "";
         username = "";
-        password = "";
+        password = "welcome1";
         phoneNumber = "";
         address = "";
         city = "";
         state = "";
         zipCode = "";
         email = "";
-                
+        
     }
     
-    public UserLogin (String firstName, String lastName, String username, String password, String phoneNumber, String address, String city, String state, String zipCode, String email) {
+    public User (Long userId, String firstName, String lastName,  String phoneNumber, String address, String city, String state, String zipCode, String email) {
 
     
     this.firstName = firstName;
     this.lastName = lastName;
-    this.username = username;
+    this.username = this.lastName + this.zipCode;
     this.password = password;
     this.phoneNumber = phoneNumber;
     this.address = address;
@@ -52,6 +59,20 @@ public class UserLogin implements Serializable {
     this.email = email;
 
     }
+
+    User(String FirstName) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+    
+    public Long getUserID() {
+        return userID;
+    }
+    
+    public void setUserID(Long userID ) { 
+        this.userID = userID;        
+    }   
+    
+              
     
     public String getFirstName() {
         return firstName;

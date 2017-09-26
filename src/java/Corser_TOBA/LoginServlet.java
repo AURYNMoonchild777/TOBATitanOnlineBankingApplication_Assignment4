@@ -19,10 +19,10 @@ public class LoginServlet extends HttpServlet {
             throws ServletException, IOException {
         
         
-        String Username = request.getParameter("uName");
-        String Password = request.getParameter("pswd");
+        String Username = request.getParameter("user");
+        String Password = request.getParameter("Password");
         
-if (Username.equals("uName") && Password.equals("pswd")){
+if (Username.equals("User") && Password.equals("Password")){
            
            response.sendRedirect("Account_activity.html");
          

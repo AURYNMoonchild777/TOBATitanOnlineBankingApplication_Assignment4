@@ -1,2 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Context path="/TOBA_Titan_Onliine_Banking_Application"/>
+
+<Context>
+       <Resource name="jdbc/toba_database" 
+              auth="Container"
+              username="CPU" 
+              password="Castiel99"
+              driverClassName="com.mysql.jdbc.Driver"
+              url="jdbc:mysql://localhost:3306/toba_database?autoReconnect=true"
+              maxWait="10000"
+              logAbandoned="true"
+              removeAbandoned="true"
+              removeAbandonedTimeout="60"
+              type="javax.sql.DataSource"
+              maxActive="100" 
+              maxIdle="30"/>
+</Context>

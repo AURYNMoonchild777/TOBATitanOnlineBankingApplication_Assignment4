@@ -16,9 +16,9 @@
 <br><br><br><br>
 <table style="border:1px solid #000000;">
 <%
-if(session.getAttribute("uname")!=null && session.getAttribute("uname")!="")
+if(session.getAttribute("user")!=null && session.getAttribute("user")!="")
 {
-String user = session.getAttribute("uname").toString();
+String User = session.getAttribute("user").toString();
 %>
 <tr><td align="center"><h1>Welcome <b><%= String firstName %> <%= String lastName %></b></h1></td></tr>
 <%

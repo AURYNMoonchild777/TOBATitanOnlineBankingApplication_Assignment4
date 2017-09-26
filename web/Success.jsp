@@ -12,7 +12,23 @@
      
     <h1>Success!</h1>
   
-    <p> $(user.Username) </p>
+    <table>
+        <tr>
+           <td>${user.FirstName}</td>
+           <td>${user.LastName}</td>   
+           <td>${user.Username}</td>
+           <td>${user.Password}</td>
+           <td>${user.PhoneNumber}</td>
+           <td>${user.Address}</td>
+           <td>${user.City}</td>
+           <td>${user.State}</td>
+           <td>${user.ZipCode}</td>
+           <td>${user.Email}</td>
+        </tr>
+    </table>
+    
+    
+    
    <% String message = (String)request.getAttribute("message"); %>
     
    
