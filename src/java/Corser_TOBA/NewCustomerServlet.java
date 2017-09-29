@@ -106,11 +106,7 @@ public class NewCustomerServlet extends HttpServlet {
     String ZipCode = request.getParameter("Zip Code");
     String Email = request.getParameter("Email");
  
-    
-    HttpSession sess = request.getSession(true);
-    
-    HttpSession session = request.getSession();
-    session.setAttribute("User", user);
+
     
     
     String message;
@@ -124,12 +120,19 @@ public class NewCustomerServlet extends HttpServlet {
         }
  
              else {
-                     User u = new User(FirstName + LastName + Username + Password + PhoneNumber + Address + City + State + ZipCode + Email); 
-                     request.setAttribute("User", user);
-                     message = "";
-                     url = "Success.html";
+                    //I moved adding the user to the session over here so it's validated properly now.
+                    HttpSession sess = request.getSession(true);
+    
+                    HttpSession session = request.getSession();
+                    session.setAttribute("User", user);
+                    User u = new User(FirstName + LastName + Username + Password + PhoneNumber + Address + City + State + ZipCode + Email); 
+                    request.setAttribute("User", user);
+                     
+                    message = "";
+                    url = "Success.html";
+                     
                      // Here's where I updated the code to add the user to the database.
-                     UserDB.insert(u);
+                    UserDB.insert(u);
              }
         
         request.setAttribute("Message", message);

@@ -15,18 +15,13 @@ public class UserDB {
     
     
     try {
-    em.persist (user);
-    trans.commit();
-    }
-    
-    catch (Exception e){
-    System.out.println(e);
-    trans.rollback();
-    }
-    
-    finally {
-    em.close();
-    
+        em.persist (user);
+        trans.commit();
+    } catch (Exception e){
+        System.out.println(e);
+        trans.rollback();
+    }   finally {
+          em.close();
     }
     
     

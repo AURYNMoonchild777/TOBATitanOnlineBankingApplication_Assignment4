@@ -9,10 +9,8 @@ public class DBUtil {
             Persistence.createEntityManagerFactory("TOBA_Titan_Onliine_Banking_ApplicationPU");  
 
 
-public static EntityManagerFactory getEmFactory() {
-return emf;
-
-
-       }
+    public static EntityManagerFactory getEmFactory() {
+        return emf;
+    }
 
 }
