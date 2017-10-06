@@ -15,4 +15,15 @@
               type="javax.sql.DataSource"
               maxActive="100" 
               maxIdle="30"/>
+       
+       
+       <Realm className="org.apache.tomcat.realm.DataSourceRealm" debug="99"
+            dataSourceName="jdbc/toba_database"
+            localDataSource="true"
+            connectionName="root"
+            connectionPassword="Castiel99"
+            connectionURL="jdbc:mysql://localhost:3306/toba_database?autoReconnect=true"
+            userTable="UserPass" userNameCol="Username" userCredCol="Password"
+            userRoleTable="UserRole" roleNameCol="RoleName" />
+       
 </Context>
